@@ -115,7 +115,8 @@ const updateUser = `-- name: UpdateUser :one
 UPDATE "user"
 SET permanent_address = $2,
     current_address   = $3,
-    current_status    = $4
+    current_status    = $4,
+    name              = $5
 
 WHERE id = $1 RETURNING id, name, permanent_address, current_address, current_status
 `
@@ -125,6 +126,7 @@ type UpdateUserParams struct {
 	PermanentAddress string `json:"permanent_address"`
 	CurrentAddress   string `json:"current_address"`
 	CurrentStatus    int32  `json:"current_status"`
+	Name             string `json:"name"`
 }
 
 func (q *Queries) UpdateUser(ctx context.Context, arg UpdateUserParams) (User, error) {
@@ -133,6 +135,7 @@ func (q *Queries) UpdateUser(ctx context.Context, arg UpdateUserParams) (User, e
 		arg.PermanentAddress,
 		arg.CurrentAddress,
 		arg.CurrentStatus,
+		arg.Name,
 	)
 	var i User
 	err := row.Scan(

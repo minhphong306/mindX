@@ -20,7 +20,8 @@ OFFSET $2;
 UPDATE "user"
 SET permanent_address = $2,
     current_address   = $3,
-    current_status    = $4
+    current_status    = $4,
+    name              = $5
 
 WHERE id = $1 RETURNING *;
 
