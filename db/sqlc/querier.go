@@ -7,9 +7,13 @@ import (
 )
 
 type Querier interface {
+	CreateLocationHistory(ctx context.Context, arg CreateLocationHistoryParams) (LocationHistory, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
+	DeleteLocationHistory(ctx context.Context, id int64) error
 	DeleteUser(ctx context.Context, id int64) error
+	GetLocationHistory(ctx context.Context, id int64) (LocationHistory, error)
 	GetUser(ctx context.Context, id int64) (User, error)
+	ListLocationHistories(ctx context.Context, arg ListLocationHistoriesParams) ([]LocationHistory, error)
 	ListUsers(ctx context.Context, arg ListUsersParams) ([]User, error)
 	UpdateUser(ctx context.Context, arg UpdateUserParams) (User, error)
 }

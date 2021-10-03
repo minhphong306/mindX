@@ -16,7 +16,7 @@ CREATE TABLE "location"
 CREATE TABLE "location_history"
 (
     "id"           bigserial PRIMARY KEY,
-    "user_id"      int         not null,
+    "user_id"      bigint      not null,
     "type"         int         not null,
     "location_id"  int         not null,
     "manual_input" varchar     not null,

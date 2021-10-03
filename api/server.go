@@ -38,11 +38,12 @@ func (server *Server) setupRouter() {
 	router := gin.Default()
 
 	authRoutes := router.Group("/admin").Use(authMiddleware(server.tokenMaker))
-	authRoutes.GET("/get-users", server.getListUser)
-	authRoutes.POST("/create-user", server.createUser)
-	authRoutes.PUT("/update-user", server.updateUser)
+	authRoutes.GET("/users/list", server.getListUser)
+	authRoutes.POST("/users", server.createUser)
+	authRoutes.PUT("/users", server.updateUser)
 
-	//authRoutes.PUT("/update-user", server.createUser)
+	authRoutes.POST("/location-history", server.createLocationHistory)
+	authRoutes.GET("/location-history/list", server.getListLocation)
 	//authRoutes.PUT("/get-user", server.createUser)
 	//authRoutes.PUT("/delete-user", server.createUser)
 

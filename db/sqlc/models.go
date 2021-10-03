@@ -13,7 +13,7 @@ type Location struct {
 
 type LocationHistory struct {
 	ID     int64 `json:"id"`
-	UserID int32 `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	//
 	//     1 - manual_input,
 	//     2 - agent_location,
